@@ -13,7 +13,6 @@ class MyTask : public QObject
     QTimer timerCheckExist;
     ZTPManager *ztpmCarrierHeart;
 
-    int carID;
 public:
     explicit MyTask(QObject *parent = 0);
 

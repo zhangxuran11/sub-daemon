@@ -17,7 +17,6 @@ MyTask::MyTask(QObject *parent) : QObject(parent)
             QFile::remove("/daemon.txt");
         }
     }
-    carID = getCarID();
     ztpm = new ZTPManager(6600,QHostAddress("224.102.228.41"));
 
     ztpmCarrierHeart = new ZTPManager(8317,QHostAddress("224.102.228.40"));
@@ -37,7 +36,7 @@ void MyTask::OnReadZTP()
 //    qDebug("daemon recv >>>");
 //    ztp.print();
 //    qDebug("daemon recv <<<");
-    if(ztp.getPara("T") == "Heart" && ztp.getPara("CarID").toInt() == carID)
+    if(ztp.getPara("T") == "Heart" && ztp.getPara("CarID").toInt() == getCarID())
     {
         timer.stop();
         timer.start(15000);
